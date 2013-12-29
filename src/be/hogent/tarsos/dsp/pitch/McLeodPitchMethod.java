@@ -1,27 +1,27 @@
 /*
-*      _______                       _____   _____ _____  
-*     |__   __|                     |  __ \ / ____|  __ \ 
+*      _______                       _____   _____ _____
+*     |__   __|                     |  __ \ / ____|  __ \
 *        | | __ _ _ __ ___  ___  ___| |  | | (___ | |__) |
-*        | |/ _` | '__/ __|/ _ \/ __| |  | |\___ \|  ___/ 
-*        | | (_| | |  \__ \ (_) \__ \ |__| |____) | |     
-*        |_|\__,_|_|  |___/\___/|___/_____/|_____/|_|     
-*                                                         
+*        | |/ _` | '__/ __|/ _ \/ __| |  | |\___ \|  ___/
+*        | | (_| | |  \__ \ (_) \__ \ |__| |____) | |
+*        |_|\__,_|_|  |___/\___/|___/_____/|_____/|_|
+*
 * -----------------------------------------------------------
 *
-*  TarsosDSP is developed by Joren Six at 
+*  TarsosDSP is developed by Joren Six at
 *  The School of Arts,
 *  University College Ghent,
 *  Hoogpoort 64, 9000 Ghent - Belgium
-*  
+*
 * -----------------------------------------------------------
 *
 *  Info: http://tarsos.0110.be/tag/TarsosDSP
 *  Github: https://github.com/JorenSix/TarsosDSP
 *  Releases: http://tarsos.0110.be/releases/TarsosDSP/
-*  
+*
 *  TarsosDSP includes modified source code by various authors,
 *  for credits and info, see README.
-* 
+*
 */
 
 /**
@@ -61,7 +61,7 @@ import java.util.List;
  * dark magic of the FFT and clinging to the familiar, friendly, laggard time
  * domain.
  * </p>
- * 
+ *
  * @author Phillip McLeod
  * @author Joren Six
  */
@@ -93,7 +93,7 @@ public final class McLeodPitchMethod implements PitchDetector {
 	 * Pitch annotations below this threshold are considered invalid, they are
 	 * ignored.
 	 */
-	private static final double LOWER_PITCH_CUTOFF = 80.0; // Hz
+	private static final double LOWER_PITCH_CUTOFF = 36.0; // Hz
 
 	/**
 	 * Defines the relative size the chosen peak (pitch) has.
@@ -140,7 +140,7 @@ public final class McLeodPitchMethod implements PitchDetector {
 	/**
 	 * Initializes the normalized square difference value array and stores the
 	 * sample rate.
-	 * 
+	 *
 	 * @param audioSampleRate
 	 *            The sample rate of the audio to check.
 	 */
@@ -150,7 +150,7 @@ public final class McLeodPitchMethod implements PitchDetector {
 
 	/**
 	 * Create a new pitch detector.
-	 * 
+	 *
 	 * @param audioSampleRate
 	 *            The sample rate of the audio.
 	 * @param audioBufferSize
@@ -162,7 +162,7 @@ public final class McLeodPitchMethod implements PitchDetector {
 
 	/**
 	 * Create a new pitch detector.
-	 * 
+	 *
 	 * @param audioSampleRate
 	 *            The sample rate of the audio.
 	 * @param audioBufferSize
@@ -182,7 +182,7 @@ public final class McLeodPitchMethod implements PitchDetector {
 	 * Implements the normalized square difference function. See section 4 (and
 	 * the explanation before) in the MPM article. This calculation can be
 	 * optimized by using an FFT. The results should remain the same.
-	 * 
+	 *
 	 * @param audioBuffer
 	 *            The buffer with audio information.
 	 */
@@ -200,7 +200,7 @@ public final class McLeodPitchMethod implements PitchDetector {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see be.hogent.tarsos.pitch.pure.PurePitchDetector#getPitch(float[])
 	 */
 	public PitchDetectionResult getPitch(final float[] audioBuffer) {
@@ -263,7 +263,7 @@ public final class McLeodPitchMethod implements PitchDetector {
 		result.setProbability((float) highestAmplitude);
 		result.setPitch(pitch);
 		result.setPitched(pitch != -1);
-		
+
 		return result;
 	}
 
@@ -284,7 +284,7 @@ public final class McLeodPitchMethod implements PitchDetector {
 	 * The following ASCII ART shows it a bit more clear, imagine this to be a
 	 * bit more curvaceous.
 	 * </p>
-	 * 
+	 *
 	 * <pre>
 	 *     nsdf(x)
 	 *       ^
@@ -298,7 +298,7 @@ public final class McLeodPitchMethod implements PitchDetector {
 	 *       |_____________________> x
 	 *            a  x b  c
 	 * </pre>
-	 * 
+	 *
 	 * @param tau
 	 *            The delay tau, b value in the drawing is the tau value.
 	 */
@@ -330,7 +330,7 @@ public final class McLeodPitchMethod implements PitchDetector {
 	 * the end (if any). Ignoring the first maximum (which is at zero). In this
 	 * diagram the desired values are marked with a +
 	 * </p>
-	 * 
+	 *
 	 * <pre>
 	 *  f(x)
 	 *   ^
@@ -342,7 +342,7 @@ public final class McLeodPitchMethod implements PitchDetector {
 	 * -1|    \/    \/            \/
 	 *   |
 	 * </pre>
-	 * 
+	 *
 	 * @param nsdf
 	 *            The array to look for maximum values in. It should contain
 	 *            values between -1 and 1
