@@ -53,6 +53,7 @@ prepender.rb
 *_prefix.txt
 experimental/
 build/TarsosDSP-*
+out/
 
 ###########
 # Maven

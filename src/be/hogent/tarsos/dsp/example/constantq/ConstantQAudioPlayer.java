@@ -54,19 +54,19 @@ import javax.swing.event.ChangeListener;
 import be.hogent.tarsos.dsp.AudioEvent;
 import be.hogent.tarsos.dsp.AudioProcessor;
 import be.hogent.tarsos.dsp.example.constantq.Player.PlayerState;
-import be.hogent.tarsos.dsp.example.visualisation.AxisUnit;
-import be.hogent.tarsos.dsp.example.visualisation.CoordinateSystem;
-import be.hogent.tarsos.dsp.example.visualisation.LinkedPanel;
-import be.hogent.tarsos.dsp.example.visualisation.ViewPort;
-import be.hogent.tarsos.dsp.example.visualisation.ViewPort.ViewPortChangedListener;
-import be.hogent.tarsos.dsp.example.visualisation.layers.AmplitudeAxisLayer;
-import be.hogent.tarsos.dsp.example.visualisation.layers.BackgroundLayer;
-import be.hogent.tarsos.dsp.example.visualisation.layers.ConstantQLayer;
-import be.hogent.tarsos.dsp.example.visualisation.layers.FrequencyAxisLayer;
-import be.hogent.tarsos.dsp.example.visualisation.layers.LegendLayer;
-import be.hogent.tarsos.dsp.example.visualisation.layers.PitchContourLayer;
-import be.hogent.tarsos.dsp.example.visualisation.layers.TimeAxisLayer;
-import be.hogent.tarsos.dsp.example.visualisation.layers.WaveFormLayer;
+//import be.hogent.tarsos.dsp.example.visualisation.AxisUnit;
+//import be.hogent.tarsos.dsp.example.visualisation.CoordinateSystem;
+//import be.hogent.tarsos.dsp.example.visualisation.LinkedPanel;
+//import be.hogent.tarsos.dsp.example.visualisation.ViewPort;
+//import be.hogent.tarsos.dsp.example.visualisation.ViewPort.ViewPortChangedListener;
+//import be.hogent.tarsos.dsp.example.visualisation.layers.AmplitudeAxisLayer;
+//import be.hogent.tarsos.dsp.example.visualisation.layers.BackgroundLayer;
+//import be.hogent.tarsos.dsp.example.visualisation.layers.ConstantQLayer;
+//import be.hogent.tarsos.dsp.example.visualisation.layers.FrequencyAxisLayer;
+//import be.hogent.tarsos.dsp.example.visualisation.layers.LegendLayer;
+//import be.hogent.tarsos.dsp.example.visualisation.layers.PitchContourLayer;
+//import be.hogent.tarsos.dsp.example.visualisation.layers.TimeAxisLayer;
+//import be.hogent.tarsos.dsp.example.visualisation.layers.WaveFormLayer;
 
 public class ConstantQAudioPlayer extends JFrame {
 
@@ -84,10 +84,10 @@ public class ConstantQAudioPlayer extends JFrame {
 	private JLabel progressLabel;
 	private JLabel totalLabel;
 	
-	private LinkedPanel waveForm;
-	private LinkedPanel constantQ;
-	private CoordinateSystem waveFormCS;
-	private CoordinateSystem constantQCS;
+//	private LinkedPanel waveForm;
+//	private LinkedPanel constantQ;
+//	private CoordinateSystem waveFormCS;
+//	private CoordinateSystem constantQCS;
 	
 	private JFileChooser fileChooser;
 	
@@ -143,54 +143,54 @@ public class ConstantQAudioPlayer extends JFrame {
 		reactToPlayerState(player.getState());
 	}
 	
-	private CoordinateSystem getCoordinateSystem(AxisUnit yUnits) {
-		float minValue = -1000;
-		float maxValue = 1000;
-		if(yUnits == AxisUnit.FREQUENCY){
-			minValue = 200;
-			maxValue = 8000;
-		}
-		return new CoordinateSystem(yUnits, minValue, maxValue);
-	}
+//	private CoordinateSystem getCoordinateSystem(AxisUnit yUnits) {
+//		float minValue = -1000;
+//		float maxValue = 1000;
+//		if(yUnits == AxisUnit.FREQUENCY){
+//			minValue = 200;
+//			maxValue = 8000;
+//		}
+//		return new CoordinateSystem(yUnits, minValue, maxValue);
+//	}
 	
 	private Component createConstantQ() {
 		JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-	
-		waveFormCS = getCoordinateSystem(AxisUnit.AMPLITUDE);
-		waveForm = new LinkedPanel(waveFormCS);
-		waveForm.addLayer(new BackgroundLayer(waveFormCS));
-		waveForm.addLayer(new AmplitudeAxisLayer(waveFormCS));
-		waveForm.addLayer(new TimeAxisLayer(waveFormCS));
-		LegendLayer legend = new LegendLayer(waveFormCS,50);
-		waveForm.addLayer(legend);
-		legend.addEntry("Wave",Color.BLACK);
-		
-		
-		splitPane.add(waveForm, JSplitPane.TOP);
-		
-		constantQCS = getCoordinateSystem(AxisUnit.FREQUENCY);
-		constantQ = new LinkedPanel(constantQCS);
-		constantQ.addLayer(new BackgroundLayer(constantQCS));
-		constantQ.addLayer(new FrequencyAxisLayer(constantQCS));
-		constantQ.addLayer(new TimeAxisLayer(constantQCS));
-		legend = new LegendLayer(constantQCS,110);
-		constantQ.addLayer(legend);
-		legend.addEntry("ConstantQ",Color.BLACK);
-		legend.addEntry("Pitch estimations",Color.RED);
-		
-		splitPane.add(constantQ, JSplitPane.BOTTOM);
-		splitPane.setDividerLocation(150);
-		
-		ViewPortChangedListener listener = new ViewPortChangedListener() {
-			@Override
-			public void viewPortChanged(ViewPort newViewPort) {
-				waveForm.repaint();
-				constantQ.repaint();
-			}
-		};
-		
-		waveForm.getViewPort().addViewPortChangedListener(listener);
-		constantQ.getViewPort().addViewPortChangedListener(listener);
+//
+//		waveFormCS = getCoordinateSystem(AxisUnit.AMPLITUDE);
+//		waveForm = new LinkedPanel(waveFormCS);
+//		waveForm.addLayer(new BackgroundLayer(waveFormCS));
+//		waveForm.addLayer(new AmplitudeAxisLayer(waveFormCS));
+//		waveForm.addLayer(new TimeAxisLayer(waveFormCS));
+//		LegendLayer legend = new LegendLayer(waveFormCS,50);
+//		waveForm.addLayer(legend);
+//		legend.addEntry("Wave",Color.BLACK);
+//
+//
+//		splitPane.add(waveForm, JSplitPane.TOP);
+//
+//		constantQCS = getCoordinateSystem(AxisUnit.FREQUENCY);
+//		constantQ = new LinkedPanel(constantQCS);
+//		constantQ.addLayer(new BackgroundLayer(constantQCS));
+//		constantQ.addLayer(new FrequencyAxisLayer(constantQCS));
+//		constantQ.addLayer(new TimeAxisLayer(constantQCS));
+//		legend = new LegendLayer(constantQCS,110);
+//		constantQ.addLayer(legend);
+//		legend.addEntry("ConstantQ",Color.BLACK);
+//		legend.addEntry("Pitch estimations",Color.RED);
+//
+//		splitPane.add(constantQ, JSplitPane.BOTTOM);
+//		splitPane.setDividerLocation(150);
+//
+//		ViewPortChangedListener listener = new ViewPortChangedListener() {
+//			@Override
+//			public void viewPortChanged(ViewPort newViewPort) {
+//				waveForm.repaint();
+//				constantQ.repaint();
+//			}
+//		};
+//
+//		waveForm.getViewPort().addViewPortChangedListener(listener);
+//		constantQ.getViewPort().addViewPortChangedListener(listener);
 		
 		return splitPane;
 	}
@@ -208,26 +208,26 @@ public class ConstantQAudioPlayer extends JFrame {
 		}
 		if(newState == PlayerState.FILE_LOADED){
 	
-			waveForm.removeLayers();
-			waveForm.addLayer(new BackgroundLayer(waveFormCS));
-			waveForm.addLayer(new AmplitudeAxisLayer(waveFormCS));
-			waveForm.addLayer(new TimeAxisLayer(waveFormCS));
-			waveForm.addLayer(new WaveFormLayer(waveFormCS, player.getLoadedFile()));
-			LegendLayer legend = new LegendLayer(waveFormCS,50);
-			waveForm.addLayer(legend);
-			legend.addEntry("Wave",Color.BLACK);
-			
-			constantQ.removeLayers();
-			constantQ.addLayer(new BackgroundLayer(constantQCS));
-			constantQ.addLayer(new ConstantQLayer(constantQCS,player.getLoadedFile(),2048,3600,10800,12));
-			constantQ.addLayer(new PitchContourLayer(constantQCS,player.getLoadedFile(),Color.red,2048,1024));
-			constantQ.addLayer(new FrequencyAxisLayer(constantQCS));
-			constantQ.addLayer(new TimeAxisLayer(constantQCS));
-			
-			legend = new LegendLayer(constantQCS,110);
-			constantQ.addLayer(legend);
-			legend.addEntry("ConstantQ",Color.BLACK);
-			legend.addEntry("Pitch estimations",Color.RED);
+//			waveForm.removeLayers();
+//			waveForm.addLayer(new BackgroundLayer(waveFormCS));
+//			waveForm.addLayer(new AmplitudeAxisLayer(waveFormCS));
+//			waveForm.addLayer(new TimeAxisLayer(waveFormCS));
+//			waveForm.addLayer(new WaveFormLayer(waveFormCS, player.getLoadedFile()));
+//			LegendLayer legend = new LegendLayer(waveFormCS,50);
+//			waveForm.addLayer(legend);
+//			legend.addEntry("Wave",Color.BLACK);
+//
+//			constantQ.removeLayers();
+//			constantQ.addLayer(new BackgroundLayer(constantQCS));
+//			constantQ.addLayer(new ConstantQLayer(constantQCS,player.getLoadedFile(),2048,3600,10800,12));
+//			constantQ.addLayer(new PitchContourLayer(constantQCS,player.getLoadedFile(),Color.red,2048,1024));
+//			constantQ.addLayer(new FrequencyAxisLayer(constantQCS));
+//			constantQ.addLayer(new TimeAxisLayer(constantQCS));
+//
+//			legend = new LegendLayer(constantQCS,110);
+//			constantQ.addLayer(legend);
+//			legend.addEntry("ConstantQ",Color.BLACK);
+//			legend.addEntry("Pitch estimations",Color.RED);
 		}
 	}
 	
